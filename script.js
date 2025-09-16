@@ -671,3 +671,308 @@ document.addEventListener('keypress', function(e) {
         sendChatMessage();
     }
 });
+
+// First Alert functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const firstAlertBtn = document.getElementById('firstAlertBtn');
+    
+    if (firstAlertBtn) {
+        firstAlertBtn.addEventListener('click', function() {
+            showFirstAlertModal();
+        });
+    }
+});
+
+function showFirstAlertModal() {
+    const modal = document.createElement('div');
+    modal.className = 'first-alert-modal';
+    modal.innerHTML = `
+        <div class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Get First Alert!</h3>
+                    <button class="close-modal" onclick="closeFirstAlertModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Be the first to know when Chyme goes live! Enter your email below to get notified.</p>
+                    <form id="firstAlertForm">
+                        <div class="form-group">
+                            <input type="email" id="alertEmail" placeholder="Enter your email address" required>
+                        </div>
+                        <button type="submit" class="btn-submit-alert">
+                            <i class="fas fa-bell"></i>
+                            Sign Up for First Alert
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Add styles for modal
+    const modalStyle = document.createElement('style');
+    modalStyle.textContent = `
+        .first-alert-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            position: relative;
+            background: white;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-content.show {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #333;
+            padding: 1.5rem;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: #333;
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .modal-body p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .modal-body .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-body input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .modal-body input:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+        
+        .btn-submit-alert {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #333;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-submit-alert:hover {
+            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            transform: translateY(-2px);
+        }
+        
+        .btn-submit-alert:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+    `;
+    
+    if (!document.querySelector('.first-alert-modal-style')) {
+        modalStyle.className = 'first-alert-modal-style';
+        document.head.appendChild(modalStyle);
+    }
+    
+    document.body.appendChild(modal);
+    
+    // Show modal
+    setTimeout(() => {
+        modal.querySelector('.modal-content').classList.add('show');
+    }, 100);
+    
+    // Handle form submission
+    const form = modal.querySelector('#firstAlertForm');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        handleFirstAlertSubmission(this);
+    });
+    
+    // Close modal when clicking overlay
+    modal.querySelector('.modal-overlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeFirstAlertModal();
+        }
+    });
+}
+
+function closeFirstAlertModal() {
+    const modal = document.querySelector('.first-alert-modal');
+    if (modal) {
+        modal.querySelector('.modal-content').classList.remove('show');
+        setTimeout(() => {
+            modal.remove();
+        }, 300);
+    }
+}
+
+function handleFirstAlertSubmission(form) {
+    const email = form.querySelector('#alertEmail').value;
+    const submitButton = form.querySelector('.btn-submit-alert');
+    const originalText = submitButton.innerHTML;
+    
+    // Show loading state
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing Up...';
+    submitButton.disabled = true;
+    
+    // Simulate API call to send email to meachyme@gmail.com
+    setTimeout(() => {
+        // Here you would normally send the email to meachyme@gmail.com
+        // For now, we'll simulate the success
+        console.log('Email to be sent to meachyme@gmail.com:', email);
+        
+        // Show success message
+        showFirstAlertSuccess();
+        
+        // Close modal
+        closeFirstAlertModal();
+        
+        // Reset button
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+    }, 2000);
+}
+
+function showFirstAlertSuccess() {
+    const message = document.createElement('div');
+    message.className = 'first-alert-success';
+    message.innerHTML = `
+        <div class="success-content">
+            <i class="fas fa-check-circle"></i>
+            <span>Successfully signed up for First Alert! We'll notify you when Chyme goes live.</span>
+        </div>
+    `;
+    
+    // Add styles for success message
+    const messageStyle = document.createElement('style');
+    messageStyle.textContent = `
+        .first-alert-success {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            max-width: 400px;
+        }
+        
+        .first-alert-success.show {
+            transform: translateX(0);
+        }
+        
+        .success-content {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .success-content i {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .success-content span {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+    `;
+    
+    if (!document.querySelector('.first-alert-success-style')) {
+        messageStyle.className = 'first-alert-success-style';
+        document.head.appendChild(messageStyle);
+    }
+    
+    document.body.appendChild(message);
+    
+    // Show message
+    setTimeout(() => {
+        message.classList.add('show');
+    }, 100);
+    
+    // Hide message
+    setTimeout(() => {
+        message.classList.remove('show');
+        setTimeout(() => {
+            message.remove();
+        }, 300);
+    }, 5000);
+}
