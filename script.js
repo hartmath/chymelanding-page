@@ -880,7 +880,7 @@ function closeFirstAlertModal() {
     }
 }
 
-function handleFirstAlertSubmission(form) {
+async function handleFirstAlertSubmission(form) {
     const email = form.querySelector('#alertEmail').value;
     const submitButton = form.querySelector('.btn-submit-alert');
     const originalText = submitButton.innerHTML;
@@ -889,22 +889,36 @@ function handleFirstAlertSubmission(form) {
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing Up...';
     submitButton.disabled = true;
     
-    // Simulate API call to send email to meachyme@gmail.com
-    setTimeout(() => {
-        // Here you would normally send the email to meachyme@gmail.com
-        // For now, we'll simulate the success
-        console.log('Email to be sent to meachyme@gmail.com:', email);
+    try {
+        // Send request to backend server
+        const response = await fetch('http://localhost:3001/api/first-alert', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email })
+        });
         
-        // Show success message
-        showFirstAlertSuccess();
+        const result = await response.json();
         
-        // Close modal
-        closeFirstAlertModal();
-        
+        if (result.success) {
+            // Show success message
+            showFirstAlertSuccess();
+            // Close modal
+            closeFirstAlertModal();
+        } else {
+            // Show error message
+            showFirstAlertError(result.message);
+        }
+    } catch (error) {
+        console.error('Network error:', error);
+        // Show error message
+        showFirstAlertError('Network error. Please try again.');
+    } finally {
         // Reset button
         submitButton.innerHTML = originalText;
         submitButton.disabled = false;
-    }, 2000);
+    }
 }
 
 function showFirstAlertSuccess() {
@@ -958,6 +972,76 @@ function showFirstAlertSuccess() {
     
     if (!document.querySelector('.first-alert-success-style')) {
         messageStyle.className = 'first-alert-success-style';
+        document.head.appendChild(messageStyle);
+    }
+    
+    document.body.appendChild(message);
+    
+    // Show message
+    setTimeout(() => {
+        message.classList.add('show');
+    }, 100);
+    
+    // Hide message
+    setTimeout(() => {
+        message.classList.remove('show');
+        setTimeout(() => {
+            message.remove();
+        }, 300);
+    }, 5000);
+}
+
+function showFirstAlertError(errorMessage) {
+    const message = document.createElement('div');
+    message.className = 'first-alert-error';
+    message.innerHTML = `
+        <div class="error-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Error: ${errorMessage}</span>
+        </div>
+    `;
+    
+    // Add styles for error message
+    const messageStyle = document.createElement('style');
+    messageStyle.textContent = `
+        .first-alert-error {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: linear-gradient(135deg, #EF4444, #DC2626);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            max-width: 400px;
+        }
+        
+        .first-alert-error.show {
+            transform: translateX(0);
+        }
+        
+        .error-content {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .error-content i {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .error-content span {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+    `;
+    
+    if (!document.querySelector('.first-alert-error-style')) {
+        messageStyle.className = 'first-alert-error-style';
         document.head.appendChild(messageStyle);
     }
     
