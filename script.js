@@ -890,7 +890,7 @@ function handleFirstAlertSubmission(form) {
     submitButton.disabled = true;
     
     // Initialize EmailJS
-    emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
+    emailjs.init("ZExNOu09FML70WNFg");
     
     // EmailJS template parameters
     const templateParams = {
