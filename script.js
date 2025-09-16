@@ -880,7 +880,7 @@ function closeFirstAlertModal() {
     }
 }
 
-async function handleFirstAlertSubmission(form) {
+function handleFirstAlertSubmission(form) {
     const email = form.querySelector('#alertEmail').value;
     const submitButton = form.querySelector('.btn-submit-alert');
     const originalText = submitButton.innerHTML;
@@ -889,36 +889,45 @@ async function handleFirstAlertSubmission(form) {
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing Up...';
     submitButton.disabled = true;
     
-    try {
-        // Send request to backend server
-        const response = await fetch('http://localhost:3001/api/first-alert', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email })
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
+    // Initialize EmailJS
+    emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
+    
+    // EmailJS template parameters
+    const templateParams = {
+        to_email: 'meachyme@gmail.com',
+        from_email: email,
+        subject: 'First Alert Signup - Chyme',
+        message: `New First Alert signup from: ${email}\n\nUser wants to be notified when Chyme goes live.`,
+        user_email: email,
+        signup_date: new Date().toLocaleDateString(),
+        signup_time: new Date().toLocaleTimeString()
+    };
+    
+    // Send email using EmailJS
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        .then(function(response) {
+            console.log('Email sent successfully!', response.status, response.text);
+            
             // Show success message
             showFirstAlertSuccess();
+            
             // Close modal
             closeFirstAlertModal();
-        } else {
+            
+            // Reset button
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+        })
+        .catch(function(error) {
+            console.error('Failed to send email:', error);
+            
             // Show error message
-            showFirstAlertError(result.message);
-        }
-    } catch (error) {
-        console.error('Network error:', error);
-        // Show error message
-        showFirstAlertError('Network error. Please try again.');
-    } finally {
-        // Reset button
-        submitButton.innerHTML = originalText;
-        submitButton.disabled = false;
-    }
+            showFirstAlertError();
+            
+            // Reset button
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+        });
 }
 
 function showFirstAlertSuccess() {
@@ -991,13 +1000,13 @@ function showFirstAlertSuccess() {
     }, 5000);
 }
 
-function showFirstAlertError(errorMessage) {
+function showFirstAlertError() {
     const message = document.createElement('div');
     message.className = 'first-alert-error';
     message.innerHTML = `
         <div class="error-content">
             <i class="fas fa-exclamation-triangle"></i>
-            <span>Error: ${errorMessage}</span>
+            <span>Sorry, there was an error signing up. Please try again or contact support.</span>
         </div>
     `;
     
