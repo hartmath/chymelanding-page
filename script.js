@@ -696,7 +696,7 @@ function showFirstAlertModal() {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Be the first to know when Chyme goes live! Enter your email below to get notified.</p>
+                    <p>Be the first to know when MEA Chyme goes live! Enter your email below to get notified.</p>
                     <form id="firstAlertForm">
                         <div class="form-group">
                             <input type="email" id="alertEmail" placeholder="Enter your email address" required>
@@ -896,8 +896,8 @@ function handleFirstAlertSubmission(form) {
     const templateParams = {
         to_email: 'meachyme@gmail.com',
         from_email: email,
-        subject: 'First Alert Signup - Chyme',
-        message: `New First Alert signup from: ${email}\n\nUser wants to be notified when Chyme goes live.`,
+        subject: 'First Alert Signup - MEA Chyme',
+        message: `New First Alert signup from: ${email}\n\nUser wants to be notified when MEA Chyme goes live.`,
         user_email: email,
         signup_date: new Date().toLocaleDateString(),
         signup_time: new Date().toLocaleTimeString(),
@@ -937,7 +937,7 @@ function showFirstAlertSuccess() {
     message.innerHTML = `
         <div class="success-content">
             <i class="fas fa-check-circle"></i>
-            <span>Successfully signed up for First Alert! We'll notify you when Chyme goes live.</span>
+            <span>Successfully signed up for First Alert! We'll notify you when MEA Chyme goes live.</span>
         </div>
     `;
     

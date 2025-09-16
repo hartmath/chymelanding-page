@@ -130,6 +130,16 @@ body {
     margin-bottom: 1rem;
 }
 
+.hero-badge {
+    height: 50px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.hero-badge:hover {
+    transform: scale(1.05);
+}
+
 .btn-primary, .btn-secondary {
     padding: 1rem 2rem;
     border: none;
@@ -709,6 +719,22 @@ body {
     color: white;
 }
 
+.download-badge {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.store-badge {
+    height: 60px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.store-badge:hover {
+    transform: scale(1.05);
+}
+
 .download-card h3 {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
@@ -1159,6 +1185,16 @@ html {
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.cta-badge {
+    height: 50px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.cta-badge:hover {
+    transform: scale(1.05);
 }
 
 /* Contact Page Styles */
