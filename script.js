@@ -900,11 +900,12 @@ function handleFirstAlertSubmission(form) {
         message: `New First Alert signup from: ${email}\n\nUser wants to be notified when Chyme goes live.`,
         user_email: email,
         signup_date: new Date().toLocaleDateString(),
-        signup_time: new Date().toLocaleTimeString()
+        signup_time: new Date().toLocaleTimeString(),
+        user_ip: 'Unknown' // You can add IP detection if needed
     };
     
     // Send email using EmailJS
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+    emailjs.send('service_bxh33he', 'template_0nc25af', templateParams)
         .then(function(response) {
             console.log('Email sent successfully!', response.status, response.text);
             
