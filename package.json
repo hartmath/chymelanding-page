@@ -1,0 +1,23 @@
+{
+  "name": "mea-landing-page",
+  "version": "1.0.0",
+  "description": "A modern, responsive landing page for MEA Chyme - The Messaging Space for Event People. Built with HTML, CSS, and JavaScript.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hartmath/chymelanding-page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hartmath/chymelanding-page/issues"
+  },
+  "homepage": "https://github.com/hartmath/chymelanding-page#readme",
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0"
+  }
+}
