@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - MEA Chyme</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-calendar-alt"></i>
+                <span>MEA Chyme</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#download">Download</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Support</h1>
+            <p>Get the help you need with MEA Chyme</p>
+        </div>
+    </section>
+
+    <!-- Support Options -->
+    <section class="support-options">
+        <div class="container">
+            <h2>How can we help you?</h2>
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Help Center</h3>
+                    <p>Browse our comprehensive help articles and tutorials</p>
+                    <a href="help.html" class="btn-outline">Visit Help Center</a>
+                </div>
+                
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Live Chat</h3>
+                    <p>Chat with our support team in real-time</p>
+                    <button class="btn-primary" onclick="startLiveChat()">Start Chat</button>
+                </div>
+                
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Support</h3>
+                    <p>Send us an email and we'll respond within 24 hours</p>
+                    <a href="mailto:support@myeventadvisor.com" class="btn-outline">Email Us</a>
+                </div>
+                
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone Support</h3>
+                    <p>Call us for immediate assistance</p>
+                    <a href="tel:+15551234567" class="btn-outline">Call Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Issues -->
+    <section class="common-issues">
+        <div class="container">
+            <h2>Common Issues & Solutions</h2>
+            <div class="issues-grid">
+                <div class="issue-item">
+                    <div class="issue-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <div class="issue-content">
+                        <h3>Download Issues</h3>
+                        <p>Having trouble downloading MEA Chyme? Check your device compatibility and available storage space.</p>
+                        <a href="help.html" class="issue-link">View Solution</a>
+                    </div>
+                </div>
+                
+                <div class="issue-item">
+                    <div class="issue-icon">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <div class="issue-content">
+                        <h3>Login Problems</h3>
+                        <p>Can't log in to your account? Try resetting your password or check your internet connection.</p>
+                        <a href="help.html" class="issue-link">View Solution</a>
+                    </div>
+                </div>
+                
+                <div class="issue-item">
+                    <div class="issue-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="issue-content">
+                        <h3>Team Invitations</h3>
+                        <p>Not receiving team invitations? Check your email spam folder and verify your email address.</p>
+                        <a href="help.html" class="issue-link">View Solution</a>
+                    </div>
+                </div>
+                
+                <div class="issue-item">
+                    <div class="issue-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="issue-content">
+                        <h3>Video Call Issues</h3>
+                        <p>Problems with video calls? Ensure you have a stable internet connection and camera permissions.</p>
+                        <a href="help.html" class="issue-link">View Solution</a>
+                    </div>
+                </div>
+                
+                <div class="issue-item">
+                    <div class="issue-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="issue-content">
+                        <h3>Payment Issues</h3>
+                        <p>Having trouble with payment? Check your payment method and billing information.</p>
+                        <a href="help.html" class="issue-link">View Solution</a>
+                    </div>
+                </div>
+                
+                <div class="issue-item">
+                    <div class="issue-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <div class="issue-content">
+                        <h3>Sync Problems</h3>
+                        <p>Messages not syncing? Try logging out and back in, or check your internet connection.</p>
+                        <a href="help.html" class="issue-link">View Solution</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Status -->
+    <section class="system-status">
+        <div class="container">
+            <h2>System Status</h2>
+            <div class="status-grid">
+                <div class="status-item">
+                    <div class="status-indicator online"></div>
+                    <div class="status-info">
+                        <h3>MEA Chyme App</h3>
+                        <p>All systems operational</p>
+                    </div>
+                </div>
+                
+                <div class="status-item">
+                    <div class="status-indicator online"></div>
+                    <div class="status-info">
+                        <h3>Messaging Service</h3>
+                        <p>All systems operational</p>
+                    </div>
+                </div>
+                
+                <div class="status-item">
+                    <div class="status-indicator online"></div>
+                    <div class="status-info">
+                        <h3>Video Calls</h3>
+                        <p>All systems operational</p>
+                    </div>
+                </div>
+                
+                <div class="status-item">
+                    <div class="status-indicator online"></div>
+                    <div class="status-info">
+                        <h3>File Sharing</h3>
+                        <p>All systems operational</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="support-form">
+        <div class="container">
+            <h2>Submit a Support Request</h2>
+            <p>Can't find what you're looking for? Submit a support request and we'll get back to you as soon as possible.</p>
+            
+            <form id="supportForm" class="support-form-container">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="supportName">Full Name</label>
+                        <input type="text" id="supportName" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="supportEmail">Email Address</label>
+                        <input type="email" id="supportEmail" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="supportSubject">Subject</label>
+                        <select id="supportSubject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="technical">Technical Issue</option>
+                            <option value="billing">Billing Question</option>
+                            <option value="feature">Feature Request</option>
+                            <option value="bug">Bug Report</option>
+                            <option value="account">Account Issue</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="supportPriority">Priority</label>
+                        <select id="supportPriority" name="priority" required>
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                            <option value="urgent">Urgent</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="supportMessage">Message</label>
+                    <textarea id="supportMessage" name="message" rows="6" required placeholder="Please describe your issue in detail..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    Submit Support Request
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>MEA Chyme</h4>
+                    <ul>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="index.html#download">Download</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="support.html">Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="https://myeventadvisor.com" target="_blank">My Event Advisor</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Download</h4>
+                    <ul>
+                        <li><a href="index.html#download">Android</a></li>
+                        <li><a href="index.html#download">iPhone</a></li>
+                        <li><a href="index.html#download">App Store</a></li>
+                        <li><a href="index.html#download">Google Play</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 MEA Chyme. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
