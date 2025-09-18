@@ -896,6 +896,8 @@ function handleFirstAlertSubmission(form) {
     const templateParams = {
         to_email: 'info@meachyme.com',
         from_email: email,
+        from_name: 'MEA Chyme',
+        reply_to: email,
         subject: 'First Alert Signup - MEA Chyme',
         message: `New First Alert signup from: ${email}\n\nUser wants to be notified when MEA Chyme goes live.`,
         user_email: email,
