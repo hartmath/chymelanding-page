@@ -894,7 +894,7 @@ function handleFirstAlertSubmission(form) {
     
     // EmailJS template parameters
     const templateParams = {
-        to_email: 'meachyme@gmail.com',
+        to_email: 'info@meachyme.com',
         from_email: email,
         subject: 'First Alert Signup - MEA Chyme',
         message: `New First Alert signup from: ${email}\n\nUser wants to be notified when MEA Chyme goes live.`,
